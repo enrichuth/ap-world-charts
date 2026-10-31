@@ -1,0 +1,755 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+<title>AP World History Charts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* AP World History Comparison Charts
+   Layout: full-bleed tables + side-by-side comparison columns */
+:root {
+  --bg: #FFFFFF;
+  --bg2: #EFECE4;
+  --fg: #1C1B17;
+  --fg2: #5A5850;
+  --rule: #D4CEBC;
+  --gold: #A07818; /* manuscripts, maps */
+  --teal: #1A6060;
+  --red: #8B2E2E;
+  --blue: #1A3D6A;
+  --green: #2D5E3A;
+  --purple: #5A2D7A;
+  --table-head: #2A2720;
+  --table-head-fg: #EDE9DC;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131210;
+    --bg2: #1C1A16;
+    --fg: #EDE9DC;
+    --fg2: #9A9588;
+    --rule: #35322A;
+    --gold: #D4A840;
+    --teal: #3A9090;
+    --red: #C06060;
+    --blue: #5A8AC0;
+    --green: #5A9E6A;
+    --purple: #9A6AC0;
+    --table-head: #EDE9DC;
+    --table-head-fg: #131210;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131210;
+  --bg2: #1C1A16;
+  --fg: #EDE9DC;
+  --fg2: #9A9588;
+  --rule: #35322A;
+  --gold: #D4A840;
+  --teal: #3A9090;
+  --red: #C06060;
+  --blue: #5A8AC0;
+  --green: #5A9E6A;
+  --purple: #9A6AC0;
+  --table-head: #EDE9DC;
+  --table-head-fg: #131210;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding-block: 44px 80px;
+}
+
+/* HEADER */
+.cover {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 3px solid var(--fg);
+  padding-bottom: 20px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.cover-left h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 700;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.cover-left p {
+  font-size: 12px;
+  color: var(--fg2);
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .04em;
+}
+.cover-badge {
+  background: var(--fg);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+/* SECTION HEADERS */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  margin-top: 40px;
+}
+.section-header h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(15px, 2.5vw, 20px);
+  font-weight: 700;
+}
+.section-bar {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--fg2);
+  letter-spacing: .08em;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  margin: 0 0 8px 0;
+}
+.timeline-track {
+  display: flex;
+  width: 100%;
+  height: 48px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.tl-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-align: center;
+  line-height: 1.3;
+  border-right: 1px solid var(--bg);
+  padding: 4px 6px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tl-seg:last-child { border-right: none; }
+.tl-seg.u1 { background: #7B4A2D; color: #fff; }
+.tl-seg.u2 { background: #7B4A2D; color: #fff; }
+.tl-seg.u3 { background: #1A3D6A; color: #fff; }
+.tl-seg.u4 { background: #1A3D6A; color: #fff; }
+.tl-seg.u5 { background: #2D5E3A; color: #fff; }
+.tl-seg.u6 { background: #5A2D7A; color: #fff; }
+.tl-seg.u7 { background: #8B2E2E; color: #fff; }
+.tl-seg.u8 { background: #A07818; color: #fff; }
+.tl-seg.u9 { background: #1A6060; color: #fff; }
+
+.tl-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--fg2);
+  padding: 0 2px;
+}
+
+/* BIG COMPARISON TABLE */
+.compare-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 12px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+table.compare {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+table.compare th {
+  background: var(--table-head);
+  color: var(--table-head-fg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 500;
+}
+table.compare th.corner {
+  background: var(--fg2);
+  color: var(--bg);
+}
+table.compare td {
+  border-top: 1px solid var(--rule);
+  padding: 9px 12px;
+  font-size: 12.5px;
+  vertical-align: top;
+  line-height: 1.5;
+}
+table.compare tr:nth-child(even) td { background: var(--bg2); }
+table.compare tr:nth-child(odd) td { background: var(--bg); }
+.row-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.dot-o { color: var(--red); font-weight: 600; }
+.dot-s { color: var(--teal); font-weight: 600; }
+.dot-m { color: var(--blue); font-weight: 600; }
+.dot-q { color: var(--green); font-weight: 600; }
+.dot-r { color: var(--purple); font-weight: 600; }
+
+/* TRADE NETWORK TABLE */
+.trade-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.trade-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  border-radius: 0 0 4px 4px;
+  padding: 12px 14px;
+}
+.trade-card h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.trade-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.trade-row:last-child { border-bottom: none; }
+.trade-row .item { color: var(--fg); }
+.trade-row .flow { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--fg2); }
+
+/* REVOLUTION COMPARE */
+.rev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+.rev-card {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.rev-head {
+  padding: 10px 12px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.rev-head.american { background: var(--blue); color: #fff; }
+.rev-head.french { background: var(--red); color: #fff; }
+.rev-head.haitian { background: #2A1A0A; color: #E8C870; }
+.rev-head.latin { background: var(--green); color: #fff; }
+.rev-body {
+  padding: 10px 12px;
+  background: var(--bg2);
+}
+.rev-row {
+  font-size: 12px;
+  padding: 3px 0;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 6px;
+  border-bottom: 1px dotted var(--rule);
+}
+.rev-row:last-child { border-bottom: none; }
+.rev-row .lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  color: var(--fg2);
+  letter-spacing: .04em;
+  padding-top: 1px;
+}
+.rev-row .val { color: var(--fg); line-height: 1.4; }
+
+/* COLUMBIAN EXCHANGE VISUAL */
+.exchange-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: start;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+.ex-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+}
+.ex-col.americas h4 { color: var(--green); }
+.ex-col.europe h4 { color: var(--blue); }
+.ex-col ul {
+  list-style: none;
+  padding: 0;
+}
+.ex-col ul li {
+  font-size: 12.5px;
+  padding: 3px 0;
+  padding-left: 14px;
+  position: relative;
+  color: var(--fg);
+}
+.ex-col.americas ul li::before { content: '🌽'; font-size: 10px; position: absolute; left: 0; }
+.ex-col.europe ul li::before { content: '⚔'; font-size: 10px; position: absolute; left: 0; }
+.ex-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 26px;
+}
+.arrow-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--gold);
+}
+.arrow-note {
+  font-size: 10px;
+  color: var(--fg2);
+  text-align: center;
+  writing-mode: vertical-rl;
+  transform: none;
+  white-space: nowrap;
+}
+
+/* MINI QUIZ BOXES */
+.quiz-strip {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin-top: 12px;
+}
+.quiz-strip h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.quiz-q {
+  font-size: 13px;
+  padding: 5px 0;
+  border-bottom: 1px dotted var(--rule);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+}
+.quiz-q:last-child { border-bottom: none; }
+.quiz-q .qnum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--fg2);
+  padding-top: 2px;
+  min-width: 18px;
+}
+
+/* THEME TOGGLE */
+.theme-btn {
+  position: sticky;
+  top: max(14px, env(safe-area-inset-top, 0px));
+  float: right;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  color: var(--fg);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* FOOTER */
+.footer {
+  border-top: 2px solid var(--fg);
+  padding-top: 16px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-left { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 12px; color: var(--fg2); }
+.footer-right { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--fg2); letter-spacing: .1em; text-align: right; }
+</style>
+
+<button class="theme-btn" id="themeBtn">☀</button>
+
+<div class="page">
+  <div class="cover">
+    <div class="cover-left">
+      <h1>AP World History<br>Comparison Charts &amp; Visual Reference</h1>
+      <p>ENRICHUTH · RESOURCE 2 OF 2 · ALL UNITS</p>
+    </div>
+    <div class="cover-badge">AP WORLD<br>HISTORY<br>CHARTS</div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <h2>Chronological Overview</h2>
+    <div class="section-bar"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-track">
+      <div class="tl-seg u1" style="width:9%">Unit I<br>1200–1450</div>
+      <div class="tl-seg u2" style="width:9%">Unit II<br>1200–1450</div>
+      <div class="tl-seg u3" style="width:12%">Unit III<br>1450–1750</div>
+      <div class="tl-seg u4" style="width:12%">Unit IV<br>1450–1750</div>
+      <div class="tl-seg u5" style="width:13%">Unit V<br>1750–1900</div>
+      <div class="tl-seg u6" style="width:12%">Unit VI<br>1750–1900</div>
+      <div class="tl-seg u7" style="width:12%">Unit VII<br>1900–Present</div>
+      <div class="tl-seg u8" style="width:11%">Unit VIII<br>1900–Present</div>
+      <div class="tl-seg u9" style="width:10%">Unit IX<br>1900–Present</div>
+    </div>
+    <div class="tl-labels">
+      <span>1200</span><span>1350</span><span>1450</span><span>1600</span>
+      <span>1750</span><span>1850</span><span>1900</span><span>1960</span><span>Present</span>
+    </div>
+  </div>
+
+  <!-- GUNPOWDER EMPIRES COMPARISON -->
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <h2>Gunpowder Empires Comparison (Unit III)</h2>
+    <div class="section-bar"></div>
+  </div>
+
+  <div class="compare-table-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th class="corner">Category</th>
+          <th><span class="dot-o">Ottoman</span></th>
+          <th><span class="dot-s">Safavid</span></th>
+          <th><span class="dot-m">Mughal</span></th>
+          <th><span class="dot-q">Qing</span></th>
+          <th><span class="dot-r">Russian</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Religion</td>
+          <td>Sunni Islam (state)</td>
+          <td>Shia Islam (state)</td>
+          <td>Islam, but syncretist (Akbar)</td>
+          <td>Confucian; Buddhism tolerated</td>
+          <td>Orthodox Christianity</td>
+        </tr>
+        <tr>
+          <td class="row-label">Key Leader</td>
+          <td>Suleiman the Magnificent</td>
+          <td>Shah Abbas I</td>
+          <td>Akbar; Shah Jahan</td>
+          <td>Kangxi Emperor</td>
+          <td>Peter the Great</td>
+        </tr>
+        <tr>
+          <td class="row-label">Capital</td>
+          <td>Constantinople (Istanbul)</td>
+          <td>Isfahan</td>
+          <td>Agra; Delhi</td>
+          <td>Beijing</td>
+          <td>Moscow → St. Petersburg</td>
+        </tr>
+        <tr>
+          <td class="row-label">Military System</td>
+          <td>Devshirme / Janissaries</td>
+          <td>Ghulam slave soldiers</td>
+          <td>Mansabdar cavalry</td>
+          <td>Banner armies (Manchu)</td>
+          <td>Streltsy; westernized army</td>
+        </tr>
+        <tr>
+          <td class="row-label">Minority Policy</td>
+          <td>Millet system (tolerance)</td>
+          <td>Persecution of Sunnis</td>
+          <td>Akbar: tolerance; Aurangzeb: not</td>
+          <td>Han majority governed separately</td>
+          <td>Forced conversion attempts</td>
+        </tr>
+        <tr>
+          <td class="row-label">Economy</td>
+          <td>Trade routes; agriculture</td>
+          <td>Silk trade; agriculture</td>
+          <td>Cotton; monsoon agriculture</td>
+          <td>Tribute; silver economy</td>
+          <td>Serf agriculture; fur trade</td>
+        </tr>
+        <tr>
+          <td class="row-label">Cultural Highlight</td>
+          <td>Hagia Sophia; Topkapi Palace</td>
+          <td>Blue Mosque; Persian poetry</td>
+          <td>Taj Mahal; miniature painting</td>
+          <td>Forbidden City; porcelain</td>
+          <td>St. Basil's Cathedral</td>
+        </tr>
+        <tr>
+          <td class="row-label">Decline Cause</td>
+          <td>Janissary power; corruption</td>
+          <td>Afghan invasion (1722)</td>
+          <td>Aurangzeb's intolerance; debt</td>
+          <td>Opium Wars; rebellions</td>
+          <td>Revolutionary pressure (1917)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TRADE NETWORKS -->
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <h2>Trade Networks at a Glance (Units I–II)</h2>
+    <div class="section-bar"></div>
+  </div>
+
+  <div class="trade-grid">
+    <div class="trade-card">
+      <h4>Silk Roads (Overland)</h4>
+      <div class="trade-row"><span class="item">Silk</span><span class="flow">China → West</span></div>
+      <div class="trade-row"><span class="item">Spices</span><span class="flow">India → Mediterranean</span></div>
+      <div class="trade-row"><span class="item">Glass, wool</span><span class="flow">Rome/Europe → East</span></div>
+      <div class="trade-row"><span class="item">Paper, printing</span><span class="flow">China → Islamic world</span></div>
+      <div class="trade-row"><span class="item">Black Death</span><span class="flow">Central Asia → Europe</span></div>
+      <div class="trade-row"><span class="item">Islam, Buddhism</span><span class="flow">Across entire route</span></div>
+    </div>
+    <div class="trade-card">
+      <h4>Indian Ocean Network</h4>
+      <div class="trade-row"><span class="item">Spices, pepper</span><span class="flow">SE Asia → Arabia/Europe</span></div>
+      <div class="trade-row"><span class="item">Cotton textiles</span><span class="flow">India → everywhere</span></div>
+      <div class="trade-row"><span class="item">Porcelain</span><span class="flow">China → Africa/India</span></div>
+      <div class="trade-row"><span class="item">Gold, ivory</span><span class="flow">East Africa → Arabia/India</span></div>
+      <div class="trade-row"><span class="item">Monsoon winds</span><span class="flow">Seasonal clockwork</span></div>
+      <div class="trade-row"><span class="item">Islam via traders</span><span class="flow">Arabia → everywhere</span></div>
+    </div>
+    <div class="trade-card">
+      <h4>Trans-Saharan Network</h4>
+      <div class="trade-row"><span class="item">Gold</span><span class="flow">West Africa → N. Africa</span></div>
+      <div class="trade-row"><span class="item">Salt</span><span class="flow">Sahara → West Africa</span></div>
+      <div class="trade-row"><span class="item">Enslaved people</span><span class="flow">Sub-Saharan → N. Africa</span></div>
+      <div class="trade-row"><span class="item">Islam</span><span class="flow">N. Africa → West Africa</span></div>
+      <div class="trade-row"><span class="item">Camels</span><span class="flow">Key technology</span></div>
+      <div class="trade-row"><span class="item">Scholarship</span><span class="flow">Timbuktu ↔ world</span></div>
+    </div>
+    <div class="trade-card">
+      <h4>Atlantic System (Unit IV)</h4>
+      <div class="trade-row"><span class="item">Sugar, tobacco, cotton</span><span class="flow">Americas → Europe</span></div>
+      <div class="trade-row"><span class="item">Manufactured goods</span><span class="flow">Europe → Africa</span></div>
+      <div class="trade-row"><span class="item">Enslaved Africans</span><span class="flow">Africa → Americas</span></div>
+      <div class="trade-row"><span class="item">Silver</span><span class="flow">Americas → Spain/China</span></div>
+      <div class="trade-row"><span class="item">Potatoes, maize</span><span class="flow">Americas → world</span></div>
+      <div class="trade-row"><span class="item">Disease</span><span class="flow">Europe → Americas (devastating)</span></div>
+    </div>
+  </div>
+
+  <!-- COLUMBIAN EXCHANGE -->
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <h2>Columbian Exchange (Unit IV)</h2>
+    <div class="section-bar"></div>
+  </div>
+
+  <div class="exchange-wrapper">
+    <div class="ex-col americas">
+      <h4>Americas → Europe/Africa/Asia</h4>
+      <ul>
+        <li>Maize (corn)</li>
+        <li>Potato</li>
+        <li>Tomato</li>
+        <li>Cacao (chocolate)</li>
+        <li>Tobacco</li>
+        <li>Chili peppers</li>
+        <li>Vanilla</li>
+        <li>Sweet potato</li>
+        <li>Peanuts</li>
+        <li>Turkey</li>
+        <li>Squash / pumpkin</li>
+        <li>Rubber</li>
+        <li>Syphilis (disputed)</li>
+      </ul>
+    </div>
+    <div class="ex-arrows">
+      <div class="arrow-label">⇄</div>
+      <div class="arrow-note">EXCHANGE</div>
+    </div>
+    <div class="ex-col europe">
+      <h4>Europe/Africa/Asia → Americas</h4>
+      <ul>
+        <li>Horses</li>
+        <li>Cattle, pigs, sheep</li>
+        <li>Wheat</li>
+        <li>Smallpox ★ (killed ~90%)</li>
+        <li>Measles, influenza</li>
+        <li>Typhus</li>
+        <li>Rats (unintentional)</li>
+        <li>Honeybees</li>
+        <li>Coffee</li>
+        <li>Sugar cane</li>
+        <li>Bananas</li>
+        <li>Christianity</li>
+        <li>Enslaved Africans</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ATLANTIC REVOLUTIONS COMPARISON -->
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <h2>Atlantic Revolutions Comparison (Unit V)</h2>
+    <div class="section-bar"></div>
+  </div>
+
+  <div class="rev-grid">
+    <div class="rev-card">
+      <div class="rev-head american">American Revolution<br><small style="font-weight:400;font-size:11px">1775–1783</small></div>
+      <div class="rev-body">
+        <div class="rev-row"><div class="lbl">Cause</div><div class="val">Taxation without representation; Enlightenment ideas</div></div>
+        <div class="rev-row"><div class="lbl">Leaders</div><div class="val">Washington, Jefferson, Franklin</div></div>
+        <div class="rev-row"><div class="lbl">Outcome</div><div class="val">Constitutional republic; slavery preserved</div></div>
+        <div class="rev-row"><div class="lbl">Social change</div><div class="val">Limited — white male property owners benefited most</div></div>
+        <div class="rev-row"><div class="lbl">Legacy</div><div class="val">Model for later revolutions; Bill of Rights</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-head french">French Revolution<br><small style="font-weight:400;font-size:11px">1789–1799</small></div>
+      <div class="rev-body">
+        <div class="rev-row"><div class="lbl">Cause</div><div class="val">Debt, famine, inequality, Enlightenment; American example</div></div>
+        <div class="rev-row"><div class="lbl">Leaders</div><div class="val">Robespierre; Napoleon (aftermath)</div></div>
+        <div class="rev-row"><div class="lbl">Outcome</div><div class="val">Republic → Reign of Terror → Napoleon</div></div>
+        <div class="rev-row"><div class="lbl">Social change</div><div class="val">Abolished feudalism, nobility privilege</div></div>
+        <div class="rev-row"><div class="lbl">Legacy</div><div class="val">Nationalism spreading across Europe; spread of revolutionary ideas</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-head haitian">Haitian Revolution<br><small style="font-weight:400;font-size:11px">1791–1804</small></div>
+      <div class="rev-body">
+        <div class="rev-row"><div class="lbl">Cause</div><div class="val">Enslaved Africans inspired by French Revolution; brutal conditions</div></div>
+        <div class="rev-row"><div class="lbl">Leaders</div><div class="val">Toussaint Louverture; Jean-Jacques Dessalines</div></div>
+        <div class="rev-row"><div class="lbl">Outcome</div><div class="val">First Black republic; Napoleon gives up Haiti + Louisiana</div></div>
+        <div class="rev-row"><div class="lbl">Social change</div><div class="val">MOST radical — abolished slavery; Black self-rule</div></div>
+        <div class="rev-row"><div class="lbl">Legacy</div><div class="val">Terrified slaveholders worldwide; inspired abolition movements</div></div>
+      </div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-head latin">Latin American Revolutions<br><small style="font-weight:400;font-size:11px">1810–1825</small></div>
+      <div class="rev-body">
+        <div class="rev-row"><div class="lbl">Cause</div><div class="val">Creole resentment; Napoleonic Wars destabilizing Spain</div></div>
+        <div class="rev-row"><div class="lbl">Leaders</div><div class="val">Simón Bolívar, José de San Martín, Miguel Hidalgo</div></div>
+        <div class="rev-row"><div class="lbl">Outcome</div><div class="val">Independence from Spain/Portugal; limited social change</div></div>
+        <div class="rev-row"><div class="lbl">Social change</div><div class="val">Creoles replaced Spanish; Indigenous/enslaved still oppressed</div></div>
+        <div class="rev-row"><div class="lbl">Legacy</div><div class="val">New nations; Monroe Doctrine; continued inequality</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE QUESTIONS -->
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <h2>Quick Check Questions</h2>
+    <div class="section-bar"></div>
+  </div>
+
+  <div class="quiz-strip">
+    <h4>Test Yourself — Cover the answer, then check your notes</h4>
+    <div class="quiz-q"><div class="qnum">Q1</div><div>What made the Indian Ocean trade network distinct from the Silk Roads in terms of transport and goods?</div></div>
+    <div class="quiz-q"><div class="qnum">Q2</div><div>How did the Mongol Empire both destroy AND facilitate trade? (Two examples of each.)</div></div>
+    <div class="quiz-q"><div class="qnum">Q3</div><div>Compare how the Ottoman Millet system and the Mughal approach to diversity under Akbar differed.</div></div>
+    <div class="quiz-q"><div class="qnum">Q4</div><div>Why is the Haitian Revolution considered the most radical of the Atlantic Revolutions?</div></div>
+    <div class="quiz-q"><div class="qnum">Q5</div><div>Name THREE crops that moved from the Americas to the Old World via the Columbian Exchange. What effect did this have on global population?</div></div>
+    <div class="quiz-q"><div class="qnum">Q6</div><div>Explain ONE way the Atlantic slave trade changed African political structures.</div></div>
+    <div class="quiz-q"><div class="qnum">Q7</div><div>What is "contextualization" in an AP World essay, and how is it different from "causation"?</div></div>
+    <div class="quiz-q"><div class="qnum">Q8</div><div>The Devshirme system — what was it, which empire used it, and what problem did it solve?</div></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Enrichuth · Decorate &amp; make it yours ✦</div>
+    <div class="footer-right">AP WORLD HISTORY · CHARTS &amp; COMPARISON · RESOURCE 2</div>
+  </div>
+</div>
+
+<script>
+const btn = document.getElementById('themeBtn');
+let theme = (() => { try { return localStorage.getItem('apworld-charts-theme') || 'system'; } catch { return 'system'; } })();
+function applyTheme(t) {
+  document.documentElement.removeAttribute('data-theme');
+  if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  btn.textContent = t === 'dark' ? '☀' : t === 'light' ? '◑' : '☾';
+}
+applyTheme(theme);
+btn.addEventListener('click', () => {
+  theme = theme === 'system' ? 'dark' : theme === 'dark' ? 'light' : 'system';
+  try { localStorage.setItem('apworld-charts-theme', theme); } catch {}
+  applyTheme(theme);
+});
+</script>
+
+</body></html>
